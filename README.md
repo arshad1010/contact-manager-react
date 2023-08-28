@@ -7,10 +7,3 @@ A simple contact manager to manage CRUD operations of contacts. Use save button 
 * Delete Contact
 * Save Contact Locally
 * Delete all Contacts
-
-## Component Structure
-```ContactManager```
-* Header (Title)
-* AddContact / UpdateContact
-* ContactList (Save Contacts, Delete Contacts)
-  * ContactCard (Contact Details, Edit Contact, Delete Contact)
