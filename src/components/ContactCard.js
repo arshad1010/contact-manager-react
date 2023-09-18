@@ -1,30 +1,34 @@
-import React from 'react'
-import './ContactCard.css';
-import editIcon from '../images/edit.png'
-import deleteIcon from '../images/delete.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import user from "../images/user.png";
 
 const ContactCard = (props) => {
-  const { id, name, phone, email } = props.contact;
+  const { id, name, email } = props.contact;
   return (
-    <div className="contact-card">
-      <div className='details'>
-        <img className="contact-picture" src={require("../images/user-avatar.png")} alt="Image not found!" />
-        <div>
-          <span>Name: {name} </span>
-          <span>Phone: {phone} </span>
-          <span>Email: {email} </span>
-        </div>
+    <div className="item">
+      <img className="ui avatar image" src={user} alt="user" />
+      <div className="content">
+        <Link
+          to={{ pathname: `/contact/${id}`, state: { contact: props.contact } }}
+        >
+          <div className="header">{name}</div>
+          <div>{email}</div>
+        </Link>
       </div>
-      <div className='operations'>
-        <button className='edit' onClick={() => { props.editId(id); props.editMode(1); }}>
-          <img src={editIcon} alt="Image not found!" />
-        </button>
-        <button className='delete' onClick={() => props.clickHandler(id)}>
-          <img src={deleteIcon} alt="Image not found!" />
-        </button>
-      </div>
+      <i
+        className="trash alternate outline icon"
+        style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}
+        onClick={() => props.clickHander(id)}
+      ></i>
+      <Link to={{ pathname: `/edit`, state: { contact: props.contact } }}>
+        <i
+          className="edit alternate outline icon"
+          style={{ color: "blue", marginTop: "7px" }}
+        ></i>
+      </Link>
     </div>
   );
-}
+};
 
 export default ContactCard;
+ 
